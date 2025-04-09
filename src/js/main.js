@@ -46,3 +46,12 @@ yourEnergyAPI.patchExerciseRating(exerciseId, exerciseRatingRequest)
   .catch(error => {
     console.error('Error:', error);
   });
+
+// example Quote
+yourEnergyAPI.fetchQuoteOfTheDay().then(response => {
+  console.log('Quote of the Day:', response);
+  console.log('Quote:', response.quote);
+  console.log('Author:', response.author);
+}).catch(error => {
+  console.error('Error fetching quote:', error);
+});
