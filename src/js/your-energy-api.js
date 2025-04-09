@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { FilterRequest, FilterResponse } from './models/filter-models.js';
 import { ExerciseFilter, ExerciseModel, ExerciseResponse } from './models/exercise-models.js';
+import QuoteModel from './models/quote-model.js';
 
 const API_URL = 'https://your-energy.b.goit.study/api';
 
@@ -79,6 +80,35 @@ class YourEnergyAPI {
       return new ExerciseModel(response.data);
     } catch (error) {
       console.error('Error updating exercise rating:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Fetches the quote of the day from the API.
+   * @returns {Promise<QuoteModel>}
+   */
+  async fetchQuoteOfTheDay() {
+    try {
+      const response = await this._api.get('/quote');
+      return new QuoteModel(response.data);
+    } catch (error) {
+      console.error('Error fetching quote of the day:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Posts a subscription to the API.
+   * @param email
+   * @returns {Promise<string>} success message
+   */
+  async postSubscription(email) {
+    try {
+      const response = await this._api.post('/subscription', { email });
+      return response.data.message;
+    } catch (error) {
+      console.error('Error posting subscription:', error);
       throw error;
     }
   }
