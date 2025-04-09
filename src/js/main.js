@@ -4,7 +4,7 @@ import { ExerciseFilter, ExerciseRatingPatchRequest } from './models/exercise-mo
 
 // example Filters
 const filterRequest = new FilterRequest('Body parts', 1, 5);
-yourEnergyAPI.getFilters(filterRequest)
+yourEnergyAPI.fetchFilters(filterRequest)
   .then(response => {
     console.log('Response:', response);
     console.log('Filters:', response.getFilters());
