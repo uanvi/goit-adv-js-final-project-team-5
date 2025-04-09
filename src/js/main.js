@@ -55,3 +55,14 @@ yourEnergyAPI.fetchQuoteOfTheDay().then(response => {
 }).catch(error => {
   console.error('Error fetching quote:', error);
 });
+
+// example Subscription
+const email = `sub_test${Date.now()}@gmail.com`; // it requires email to be uniq
+yourEnergyAPI.postSubscription(email)
+  .then(response => {
+    console.log('Subscription Response:', response);
+  })
+  .catch(
+    error => {
+      console.error('Error:', error);
+    });

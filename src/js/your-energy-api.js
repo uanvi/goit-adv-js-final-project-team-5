@@ -97,6 +97,21 @@ class YourEnergyAPI {
       throw error;
     }
   }
+
+  /**
+   * Posts a subscription to the API.
+   * @param email
+   * @returns {Promise<string>} success message
+   */
+  async postSubscription(email) {
+    try {
+      const response = await this._api.post('/subscription', { email });
+      return response.data.message;
+    } catch (error) {
+      console.error('Error posting subscription:', error);
+      throw error;
+    }
+  }
 }
 
 const yourEnergyAPI = new YourEnergyAPI();
