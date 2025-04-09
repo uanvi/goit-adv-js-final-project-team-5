@@ -5,8 +5,12 @@ const API_URL = 'https://your-energy.b.goit.study/api';
 
 class YourEnergyAPI {
   constructor() {
-    axios.defaults.baseURL = API_URL;
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    this._api = axios.create({
+      baseURL: API_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   /**
@@ -16,7 +20,7 @@ class YourEnergyAPI {
    */
   async getFilters(filterRequest) {
     try {
-      const response = await axios.get('/filters', {
+      const response = await this._api.get('/filters', {
         params: filterRequest,
       });
       return new FilterResponse(response);
