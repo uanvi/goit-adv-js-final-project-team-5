@@ -1,3 +1,5 @@
+import BaseApiResponse from './base-api-response.js';
+
 /**
  * Class representing a filter model.
  * @class
@@ -47,12 +49,17 @@ class FilterRequest {
  * @property {number} perPage - The number of items per page.
  * @property {number} totalPages - The total number of pages.
  */
-class FilterResponse {
+class FilterResponse extends BaseApiResponse{
     constructor(response) {
-        this.filters = response.data.results.map(result => new FilterModel(result.filter, result.name, result.imgURL));
-        this.page = response.data.page;
-        this.perPage = response.data.perPage;
-        this.totalPages = response.data.totalPages;
+        super(response);
+    }
+
+    /**
+     * Get the array of FilterModel instances.
+     * @returns {Array} The array of FilterModel instances.
+     */
+    getFilters() {
+      return this.results.map(filter => new FilterModel(filter.filter, filter.name, filter.imgURL));
     }
 }
 
