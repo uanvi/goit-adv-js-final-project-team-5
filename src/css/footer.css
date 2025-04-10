@@ -1,1 +1,232 @@
-/* footer css here */
+.footer {
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 16px;
+  }
+}
+
+.footer > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 0;
+
+  background-color: var(--color-black);
+  box-shadow: 0 0 0 100vmax var(--color-black);
+  clip-path: inset(0 -100vmax -100vmax);
+}
+
+.footer .footer-content {
+  color: var(--color-white);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: start;
+  justify-content: start;
+
+  margin: 0;
+  padding: 40px 0 120px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 114px;
+    justify-content: space-between;
+    padding: 64px 0;
+  }
+}
+
+.footer-logo-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.logo-svg {
+  width: 132px;
+  height: 24px;
+}
+
+.footer .social-link {
+  color: var(--color-white);
+  background-color: transparent;
+  border-color: var(--color-icon);
+}
+
+.footer .social-link:hover,
+.footer .social-link:focus {
+  background-color: var(--color-white);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.footer .social-link:hover .social-icon {
+  fill: var(--color-black);
+}
+
+.footer-form-text {
+  color: var(--color-white);
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.76px;
+  margin-bottom: 20px;
+}
+
+.subscribe-form label {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.subscription-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscription-form label {
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.subscription-form input[type='email'] {
+  width: 100%;
+  padding: 12px 0 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.subscription-form input[type='email']:focus {
+  outline: none;
+}
+
+.subscription-form input:hover {
+  background-color: #1b1b1b;
+}
+
+.subscription-form input::placeholder {
+  color: #b3b3b3;
+}
+
+.subscription-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.subscription-form button:hover {
+  background-color: #b3b3b3;
+}
+
+.subscription-form label {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  color: var(--color-copyright);
+}
+
+.footer-copyright-text {
+  margin-bottom: 10px;
+}
+
+.footer-copyright-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-policy-links {
+  display: flex;
+  gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer-content {
+    display: flex;
+    flex-direction: row;
+    gap: 114px;
+  }
+
+  .footer-form-text {
+    font-size: 56px;
+    line-height: 1.07;
+    text-align: left;
+    width: 434px;
+    margin-bottom: 32px;
+  }
+
+  .footer-copyright {
+    display: flex;
+    align-items: center;
+    gap: 140px;
+  }
+
+  .footer-copyright-links {
+    margin-top: 0;
+    white-space: nowrap;
+  }
+
+  .footer-copyright-text {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer-content {
+    gap: 158px;
+    margin-bottom: 70px;
+  }
+
+  .footer-form {
+    display: flex;
+    gap: 115px;
+  }
+
+  .subscription-form {
+    width: 352px;
+  }
+
+  .footer .footer-form-text {
+    margin-bottom: 0;
+    width: 595px;
+  }
+
+  .footer-copyright {
+    display: flex;
+    flex-direction: row;
+    gap: 190px;
+  }
+
+  .footer-copyright-links {
+    margin-top: 0;
+    justify-content: unset;
+    flex-direction: row;
+    gap: 498px;
+  }
+}
