@@ -47,15 +47,6 @@ yourEnergyAPI.patchExerciseRating(exerciseId, exerciseRatingRequest)
     console.error('Error:', error);
   });
 
-// example Quote
-yourEnergyAPI.fetchQuoteOfTheDay().then(response => {
-  console.log('Quote of the Day:', response);
-  console.log('Quote:', response.quote);
-  console.log('Author:', response.author);
-}).catch(error => {
-  console.error('Error fetching quote:', error);
-});
-
 // example Subscription
 const email = `sub_test${Date.now()}@gmail.com`; // it requires email to be uniq
 yourEnergyAPI.postSubscription(email)
