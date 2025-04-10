@@ -15,5 +15,10 @@
 @import url('./hero.css');
 @import url('./footer.css');
 @import url('./exercises.css');
+
+/* Components style */
+@import url('./scroll-up.css');
+@import url('./loader.css');
 @import url('./quote.css');
 @import url('./filters.css');
+
