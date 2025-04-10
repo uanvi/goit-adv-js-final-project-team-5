@@ -133,4 +133,4 @@ class ExercisesFilterRenderer {
 }
 
 const page = new ExercisesFilterRenderer();
-page.init();
+export { page as ExercisesFilterRenderer };

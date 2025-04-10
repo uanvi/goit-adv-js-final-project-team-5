@@ -57,3 +57,10 @@ yourEnergyAPI.postSubscription(email)
     error => {
       console.error('Error:', error);
     });
+
+
+/// main logic
+import { ExercisesFilterRenderer } from './exercises.js';
+
+
+ExercisesFilterRenderer.init();
