@@ -29,7 +29,7 @@ import yourEnergyAPI from './your-energy-api.js';
     }
 
     isFresh() {
-      return this.#date === Quote.#formatDate(new Date());
+      return this.#date === this.#formatDate(new Date());
     }
 
     #formatDate(date) {
@@ -47,7 +47,11 @@ import yourEnergyAPI from './your-energy-api.js';
 
   class QuoteProvider {
     static #load() {
-      return JSON.parse(localStorage.getItem(storageKey));
+      const quoteData = JSON.parse(localStorage.getItem(storageKey));
+      if(quoteData) {
+        quoteData.date = new Date(quoteData?.date);
+      }
+      return quoteData ? new Quote(quoteData) : null;
     }
 
     static #save(quote) {
