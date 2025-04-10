@@ -1,0 +1,142 @@
+.quotes {
+  margin-block-start: 80px;
+  gap: 20px 0;
+}
+
+.daily-quote-container {
+  background: var(--color-black);
+}
+
+.quote-recommendation {
+  background: white;
+}
+
+.daily-quote-container,
+.quote-recommendation {
+  display: flex;
+  gap: 0 16px;
+  height: 100%;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.quote-image {
+  padding: 0;
+}
+
+.quote-icon-wrapper {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-rating);
+  border-radius: 50%;
+  padding: 0 4px;
+}
+.quote-recommendation > .quote-icon-wrapper {
+  background-color: var(--color-black);
+}
+.quote-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--color-white);
+}
+
+.quote-wrapper,
+.quote-recommendation-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1em;
+  color: var(--color-white);
+}
+.quote-recommendation-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1em;
+}
+
+.quote-recommendation-subtitle {
+  font-size: 16px;
+  line-height: 1.1em;
+  color: var(--color-darkgrey);
+}
+.quote-text,
+.quote-recommendation-text {
+  font-size: 14px;
+  line-height: 1.1em;
+  color: var(--color-text-secondary);
+}
+.quote-recommendation-text {
+  color: inherit;
+}
+
+.quote-author {
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.quote-image-img {
+  width: 100%;
+}
+
+.quote-image-img img,
+.quote-image-img picture,
+.quote-image-img source {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  max-height: 215px;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .quotes {
+    gap: 32px 0;
+  }
+
+  .quote-title,
+  .quote-recommendation-title {
+    font-size: 24px;
+  }
+
+  .daily-quote-container,
+  .quote-recommendation {
+    padding: 32px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1440px) {
+  .quotes {
+    flex-direction: column;
+    max-width: 444px;
+    margin-block-start: 0;
+  }
+
+  .daily-quote-container,
+  .quote-image,
+  .quote-recommendation {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+
+  .quote-title,
+  .quote-recommendation-title {
+    font-size: 24px;
+    line-height: 1.1em;
+  }
+}
