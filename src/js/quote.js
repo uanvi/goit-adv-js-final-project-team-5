@@ -78,7 +78,7 @@ import yourEnergyAPI from './your-energy-api.js';
   async function renderQuote() {
     const quoteContainer = document.querySelector(`[data-role="${ROLE}"]`);
     if (quoteContainer === null) {
-      throw new Error(`Failed to render quote: element with data-role "${QUOTE_CONTAINER_ID}" not found.`);
+      throw new Error(`Failed to render quote: element with data-role "${ROLE}" not found.`);
     }
     try {
       const quote = await QuoteProvider.getQuote();

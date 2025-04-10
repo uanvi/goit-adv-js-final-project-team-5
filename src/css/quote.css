@@ -44,8 +44,8 @@
   fill: var(--color-white);
 }
 
-.quote-wraper,
-.quote-news-wraper {
+.quote-wrapper,
+.quote-recommendation-wrapper {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -63,24 +63,24 @@
   line-height: 1em;
   color: var(--color-white);
 }
-.quote-news-title {
+.quote-recommendation-title {
   font-weight: 500;
   font-size: 20px;
   line-height: 1em;
 }
 
-.quote-news-subtitle {
+.quote-recommendation-subtitle {
   font-size: 16px;
   line-height: 1.1em;
   color: var(--color-darkgrey);
 }
 .quote-text,
-.quote-news-text {
+.quote-recommendation-text {
   font-size: 14px;
   line-height: 1.1em;
   color: var(--color-text-secondary);
 }
-.quote-news-text {
+.quote-recommendation-text {
   color: inherit;
 }
 
@@ -109,7 +109,7 @@
   }
 
   .quote-title,
-  .quote-news-title {
+  .quote-recommendation-title {
     font-size: 24px;
   }
 
@@ -135,7 +135,7 @@
   }
 
   .quote-title,
-  .quote-news-title {
+  .quote-recommendation-title {
     font-size: 24px;
     line-height: 1.1em;
   }
