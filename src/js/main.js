@@ -4,7 +4,7 @@ import {
   ExerciseFilter,
   ExerciseRatingPatchRequest,
 } from './models/exercise-models.js';
-import { createScrollUpButton } from './components/Scroll-up-button.js';
+import { createScrollUpButton } from './components/scroll-up-button.js';
 import { Loader } from './components/loader.js';
 
 const loader = new Loader();
