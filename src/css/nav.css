@@ -1,4 +1,4 @@
-/* #region Navigation */
+/* #region Navbar */
 .nav-list {
   display: flex;
   flex-direction: row;
@@ -35,9 +35,9 @@
   color: var(--color-black);
   background-color: var(--color-white);
 }
-/* #endregion Navigation */
+/* #endregion Navbar */
 
-/* #region Socials */
+/* #region Socials links header */
 /* ul */
 .nav-social-list {
   margin: 0;
@@ -89,4 +89,4 @@
 .header .nav-social-list-item:focus .nav-social-list-icon {
   fill: var(--color-white);
 }
-/* #endregion Socials */
+/* #endregion Socials links header */
