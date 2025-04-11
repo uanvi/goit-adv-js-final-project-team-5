@@ -38,6 +38,7 @@
 /* #endregion Navigation */
 
 /* #region Socials */
+/* ul */
 .nav-social-list {
   margin: 0;
   padding: 0;
@@ -45,14 +46,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-
   display: none;
-
   @media screen and (min-width: 768px) {
     display: flex;
   }
 }
 
+/* li */
 .nav-social-list-item {
   cursor: pointer;
   padding: 8px;
@@ -60,16 +60,18 @@
 }
 .header .nav-social-list-item {
   border: 1px solid var(--color-grey);
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.87);
   transition: var(--trns);
   transition-property: background-color;
 }
 .header .nav-social-list-item:hover,
 .header .nav-social-list-item:focus {
   background-color: var(--color-black);
+  fill: rgba(255, 255, 255, 0.87);
 }
 
-.nav-social-link-icon {
+/* icons */
+.nav-social-list-link {
   display: block;
   width: 28px;
   height: 28px;
