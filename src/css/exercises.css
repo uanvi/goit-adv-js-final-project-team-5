@@ -426,3 +426,39 @@ svg.exercise-arrow {
   width: 13px;
   height: 13px;
 }
+
+.exercises-pagination__item.exercises-pagination__beginning,
+.exercises-pagination__item.exercises-pagination__previous,
+.exercises-pagination__item.exercises-pagination__next,
+.exercises-pagination__item.exercises-pagination__last {
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.exercises-pagination__item.disabled,
+.exercises-pagination__item.disabled svg{
+  color: var(--color-grey);
+  border-color: var(--color-grey);
+  cursor: default;
+  fill: var(--color-grey);
+}
+
+.exercises-pagination li.exercises-pagination__dots {
+  border: none;
+}
+
+.exercises-pagination__arrow {
+  margin: 0 5px;
+}
+
+.exercises-pagination__previous {
+  margin-right: 15px;
+}
+
+.exercises-pagination__next {
+  margin-left: 15px;
+}
+
+.exercises-pagination__number {
+  margin: 0 4px;
+}

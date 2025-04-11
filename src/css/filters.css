@@ -68,12 +68,16 @@
 
 .search-container {
   margin-top: 40px;
-  display: none;
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--color-black);
   padding: 12px;
   border-radius: 30px;
+  display: flex;
+}
+
+.search-container.hidden {
+  display: none;
 }
 
 .search-container input {
@@ -102,6 +106,7 @@
   width: 18px;
   height: 18px;
   padding: 0;
+  border: none;
 }
 
 @media (min-width: 768px) {
