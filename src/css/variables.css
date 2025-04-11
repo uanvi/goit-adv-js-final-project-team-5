@@ -11,6 +11,8 @@
   --color-rating: rgba(244, 244, 244, 0.2);
   --color-modal-backdrop: rgba(4, 4, 4, 0.4);
   --color-accent: #eea10c;
+  --color-icon: rgba(244, 244, 244, 0.1);
+  --color-copyright: rgba(198, 205, 209, 1);
 
   /* Animations */
   --animation-delay: 0.2s;
