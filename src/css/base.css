@@ -35,3 +35,19 @@ main:has(.back-link) {
 .hidden {
   display: none;
 }
+
+.main-container {
+  margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    margin-bottom: 100px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-container {
+    margin-bottom: 132px;
+  }
+}
