@@ -1,3 +1,4 @@
+import icons from '../img/svg/sprite.svg';
 import yourEnergyAPI from './your-energy-api.js';
 import { FilterRequest } from './models/filter-models.js';
 import { capitalizeFirstLetter } from './helpers.js';
@@ -79,7 +80,7 @@ class ExerciseElement {
     const startButton = document.createElement('button');
     startButton.classList.add('exercise-header__start-button');
     startButton.textContent = 'Start';
-    startButton.append(this._createSvg('icon-start-arrow','exercise-arrow', 13, 13));
+    startButton.append(this._createSvg('exercise-start','exercise-arrow', 13, 13));
     this._header.append(leftBlock, startButton);
   }
 
@@ -118,7 +119,7 @@ class ExerciseElement {
     const svgElement = document.createElement('svg');
     svgElement.classList.add(cssClass);
     const useElement = document.createElement('use');
-    useElement.setAttribute('href', `/img/svg/sprite.svg#${iconName}`);
+    useElement.setAttribute('href', `${icons}#${iconName}`);
     svgElement.appendChild(useElement);
     return svgElement;
   }
@@ -215,14 +216,16 @@ class ExercisesFilterRenderer {
 
     this._elements = exercises.map((exercise) => {
       const exerciseElement = new ExerciseElement();
-      exerciseElement.setId(exercise._id);
+      exerciseElement.setId(exercise.id);
       exerciseElement.addHeader(exercise.rating);
       exerciseElement.addName(exercise.name);
       exerciseElement.addInfo(exercise.burnedCalories, exercise.bodyPart, exercise.target);
       return exerciseElement.build();
     });
 
-    this._exercisesParent.append(...this._elements);
+    for (const element of this._elements) {
+      this._exercisesParent.innerHTML += element.outerHTML;
+    }
   }
 
   async _onFilterClick(event) {
