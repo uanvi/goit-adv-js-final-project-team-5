@@ -1,3 +1,19 @@
+.header .social-link {
+  color: var(--color-black);
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.header .social-link:hover,
+.header .social-link:focus {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+.footer .social-link:hover .social-icon {
+  fill: var(--color-white);
+}
 /* #region Header */
 .header {
   margin-top: 20px;
