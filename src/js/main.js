@@ -116,3 +116,10 @@ yourEnergyAPI
 document.addEventListener('DOMContentLoaded', () => {
   createScrollUpButton();
 });
+
+
+/// main logic
+import { ExercisesFilterRenderer } from './exercises.js';
+
+
+ExercisesFilterRenderer.init();
