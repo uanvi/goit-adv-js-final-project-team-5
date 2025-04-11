@@ -462,3 +462,9 @@ svg.exercise-arrow {
 .exercises-pagination__number {
   margin: 0 4px;
 }
+
+li.exercises-filters__item:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 4px 1px var(--color-modal-backdrop);
+}
