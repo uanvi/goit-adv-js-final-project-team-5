@@ -3,6 +3,7 @@ import yourEnergyAPI from './your-energy-api.js';
 import { FilterRequest } from './models/filter-models.js';
 import { capitalizeFirstLetter } from './helpers.js';
 import { ExerciseFilter } from './models/exercise-models.js';
+import { initModalListeners } from './modal.js';
 
 class ExerciseFilterElement {
   constructor() {
@@ -62,7 +63,7 @@ class ExerciseElement {
     this._infoBlock.classList.add('exercise-info');
   }
 
-  addHeader(rating) {
+  addHeader(rating, id) {
     const leftBlock = document.createElement('div');
     leftBlock.classList.add('exercise-header__left');
     const workoutName = document.createElement('p');
@@ -78,8 +79,12 @@ class ExerciseElement {
     leftBlock.append(ratingElement);
 
     const startButton = document.createElement('button');
+    startButton.type = 'button';
     startButton.classList.add('exercise-header__start-button');
+    startButton.classList.add('btn-start');
     startButton.textContent = 'Start';
+    startButton.value = id;
+    startButton.setAttribute('data-modal-open', '');
     startButton.append(this._createSvg('exercise-start', 'exercise-arrow', 13, 13));
     this._header.append(leftBlock, startButton);
   }
@@ -209,6 +214,7 @@ class ExercisesFilterRenderer {
       const request = this._buildRequest(filterName, filter);
       localStorage.setItem('exerciseFilter', JSON.stringify(request));
       await this._loadAndRenderExercises(request);
+      initModalListeners()
     }
   }
 
@@ -369,7 +375,7 @@ class ExercisesFilterRenderer {
     this._elements = exercises.map((exercise) => {
       const exerciseElement = new ExerciseElement();
       exerciseElement.setId(exercise.id);
-      exerciseElement.addHeader(exercise.rating);
+      exerciseElement.addHeader(exercise.rating, exercise.id);
       exerciseElement.addName(exercise.name);
       exerciseElement.addInfo(exercise.burnedCalories, exercise.bodyPart, exercise.target);
       return exerciseElement.build();
