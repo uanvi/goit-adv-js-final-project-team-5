@@ -1,13 +1,12 @@
 import yourEnergyAPI from './your-energy-api.js';
 import { FilterRequest } from './models/filter-models.js';
-import {
-  ExerciseFilter,
-  ExerciseRatingPatchRequest,
-} from './models/exercise-models.js';
+import { ExerciseFilter, ExerciseRatingPatchRequest } from './models/exercise-models.js';
 import { createScrollUpButton } from './components/scroll-up-button.js';
 import { Loader } from './components/loader.js';
 
 import 'izitoast/dist/css/iziToast.min.css';
+/// main logic
+import { ExercisesFilterRenderer } from './exercises.js';
 
 const loader = new Loader();
 
@@ -34,7 +33,7 @@ const exerciseFilter = new ExerciseFilter(
   'barbell',
   'pull',
   1,
-  5
+  5,
 );
 loader.show();
 yourEnergyAPI
@@ -68,7 +67,7 @@ yourEnergyAPI
 const exerciseRatingRequest = new ExerciseRatingPatchRequest(
   3,
   `test${Date.now()}@gmail.com`, // it requires email to be uniq
-  'Great exercise! Very effective.'
+  'Great exercise! Very effective.',
 );
 loader.show();
 yourEnergyAPI
@@ -120,8 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/// main logic
-import { ExercisesFilterRenderer } from './exercises.js';
+const page = new ExercisesFilterRenderer();
 
-
-ExercisesFilterRenderer.init();
+page.init();

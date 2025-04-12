@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-list-link');
   const footerNavLinks = document.querySelectorAll('.copyright-link');
   const parts = window.location.pathname

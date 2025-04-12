@@ -15,7 +15,7 @@
  * @property {number} totalPages - The total number of pages.
  */
 class BaseApiResponse {
-  constructor(response){
+  constructor(response) {
     this.page = response.page;
     this.perPage = response.perPage;
     this.totalPages = response.totalPages;

@@ -1,7 +1,7 @@
-import { getFavorites, toggleFavorite } from './storage.js';
 import yourEnergyAPI from './your-energy-api.js';
 import { ExerciseRatingPatchRequest } from './models/exercise-models.js';
 import iziToast from 'izitoast';
+import { isExerciseFavorite, toggleFavorite } from './utils/favoritesStorage.js';
 
 const SELECTORS = {
   closeModalButton: '[data-modal-close]',
@@ -107,7 +107,7 @@ function createStatItem(title, value) {
 }
 
 function updateFavoriteButtonState() {
-  const isFavorite = getFavorites().includes(currentExerciseId);
+  const isFavorite = isExerciseFavorite(currentExerciseId);
   addToFavoritesButton.classList.toggle(CLASS_NAMES.favAdded, isFavorite);
   document.querySelector(SELECTORS.btnFavText).textContent = isFavorite
     ? 'Remove from favorites'

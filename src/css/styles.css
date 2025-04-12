@@ -18,6 +18,7 @@
 @import url('./footer.css');
 @import url('./exercises.css');
 @import url('./social.css');
+@import url('./favorite.css');
 
 /* Components style */
 @import url('./scroll-up.css');

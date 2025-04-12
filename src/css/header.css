@@ -1,6 +1,7 @@
 .footer .social-link:hover .social-icon {
   fill: var(--color-white);
 }
+
 /* #region Header */
 .header {
   margin-top: 20px;
@@ -34,4 +35,5 @@
   width: 132px;
   height: 24px;
 }
+
 /* #endregion General */

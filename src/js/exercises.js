@@ -4,6 +4,7 @@ import { FilterRequest } from './models/filter-models.js';
 import { capitalizeFirstLetter } from './helpers.js';
 import { ExerciseFilter } from './models/exercise-models.js';
 import { initModalListeners } from './modal.js';
+import { removeExerciseFromFavorite } from './utils/favoritesStorage.js';
 
 class ExerciseFilterElement {
   constructor() {
@@ -128,6 +129,66 @@ class ExerciseElement {
     svgElement.appendChild(useElement);
     return svgElement;
   }
+
+  addFavoriteHeader(id) {
+    const leftBlock = document.createElement('div');
+    leftBlock.classList.add('exercise-header__left');
+    const workoutName = document.createElement('p');
+    workoutName.classList.add('exercise-workout');
+    workoutName.textContent = 'WORKOUT';
+    leftBlock.append(workoutName);
+
+    // Create the "Remove" button instead of the rating
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('exercise-header__remove-button');
+    removeButton.append(this._createSvg('trash', 'exercise-trash')); // You can use a specific "remove" icon
+
+    // Add event listener to handle removal logic
+    removeButton.addEventListener('click', (event) => {
+      // Retrieve the exercise ID (stored in the element's dataset)
+      const exerciseId = this._element.dataset.id;
+
+      // Call your removal logic here
+      console.log(`Removing exercise with ID: ${exerciseId}`);
+      this.handleRemoveClick(event, exerciseId);
+    });
+
+    // Add the "Remove" button to the header
+    leftBlock.append(removeButton);
+
+    const startButton = document.createElement('button');
+    startButton.type = 'button';
+    startButton.classList.add('exercise-header__start-button');
+    startButton.classList.add('btn-start');
+    startButton.textContent = 'Start';
+    startButton.value = id;
+    startButton.setAttribute('data-modal-open', '');
+    startButton.append(this._createSvg('exercise-start', 'exercise-arrow', 13, 13));
+    this._header.append(leftBlock, startButton);
+  }
+
+  handleRemoveClick(event, exerciseId) {
+    event.preventDefault();  // Prevent default button behavior (if any)
+
+    // Perform the removal action
+    console.log(`Exercise with ID ${exerciseId} will be removed`);
+
+    // You can trigger a removal function here, for example:
+    // favoriteRenderer.removeFavoriteAndRender(exerciseId);
+    // or directly remove from localStorage:
+    removeExerciseFromFavorite(exerciseId);
+
+    // Optionally, you can update the UI after removal, e.g., re-render the favorites list.
+    this.removeExerciseFromUI(exerciseId);
+  }
+
+  // Function to remove the exercise from the UI (if needed)
+  removeExerciseFromUI(exerciseId) {
+    const exerciseElement = document.querySelector(`[data-id="${exerciseId}"]`);
+    if (exerciseElement) {
+      exerciseElement.remove();
+    }
+  }
 }
 
 class ExercisesFilterRenderer {
@@ -214,7 +275,7 @@ class ExercisesFilterRenderer {
       const request = this._buildRequest(filterName, filter);
       localStorage.setItem('exerciseFilter', JSON.stringify(request));
       await this._loadAndRenderExercises(request);
-      initModalListeners()
+      initModalListeners();
     }
   }
 
@@ -443,5 +504,5 @@ class ExercisesFilterRenderer {
   }
 }
 
-const page = new ExercisesFilterRenderer();
-export { page as ExercisesFilterRenderer };
+
+export { ExercisesFilterRenderer, ExerciseElement };
