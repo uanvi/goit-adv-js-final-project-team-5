@@ -80,12 +80,12 @@ class ExerciseElement {
     const startButton = document.createElement('button');
     startButton.classList.add('exercise-header__start-button');
     startButton.textContent = 'Start';
-    startButton.append(this._createSvg('exercise-start','exercise-arrow', 13, 13));
+    startButton.append(this._createSvg('exercise-start', 'exercise-arrow', 13, 13));
     this._header.append(leftBlock, startButton);
   }
 
   addName(workoutName) {
-    this._nameBlock.append(this._createSvg('runner','exercise-name-icon', 13, 13));
+    this._nameBlock.append(this._createSvg('runner', 'exercise-name-icon', 13, 13));
     this._nameBlock.append(workoutName);
   }
 
@@ -132,12 +132,16 @@ class ExercisesFilterRenderer {
     if (!this._exercisesFilterParent) {
       throw new Error('Exercises filter parent element not found');
     }
+    this._paginationElement = document.querySelector('.exercises-pagination>ul');
     this._breadcrumbs = document.querySelector('.breadcrumbs');
+    this._searchContainer = document.getElementById('search-container');
+    this._searchInput = this._searchContainer.querySelector('.search-input');
 
     this._page = 1;
     this._limit = 12;
     this._pages = 1;
     this._elements = [];
+    this._isCategory = false;
   }
 
   async init() {
@@ -148,7 +152,7 @@ class ExercisesFilterRenderer {
   }
 
   _setPageLimit() {
-    this._pages = 1;
+    this._page = 1;
     // if mobile
     if (window.innerWidth <= 768) {
       this._limit = 9;
@@ -186,21 +190,169 @@ class ExercisesFilterRenderer {
   }
 
   _renderFilters() {
-    this._exercisesParent.innerHTML = '';
-    this._exercisesParent.append(...this._elements);
-    // todo: add pagination
+    this._exercisesParent.replaceChildren(...this._elements);
+    this._renderPagination();
+    this._addBreadcrumbs();
+    this._isCategory = true;
+    localStorage.removeItem('exerciseFilter');
+    this._searchContainer.classList.add('hidden');
   }
 
   async _onCardClick(event) {
     event.preventDefault();
     const target = event.target.closest('.exercises-filters__item');
     if (target) {
+      this._searchContainer.classList.remove('hidden');
+      this._addBreadcrumbs(target.dataset.name);
       const filterName = target.dataset.name;
       const filter = target.dataset.filter;
       const request = this._buildRequest(filterName, filter);
-      const response = await yourEnergyAPI.fetchExercisesByFilter(request);
-      this._renderExercises(response);
+      localStorage.setItem('exerciseFilter', JSON.stringify(request));
+      await this._loadAndRenderExercises(request);
     }
+  }
+
+  async _loadAndRenderExercises(request) {
+    const response = await yourEnergyAPI.fetchExercisesByFilter(request);
+    this._renderExercises(response);
+    this._renderPagination();
+    this._isCategory = false;
+  }
+
+  _addBreadcrumbs(breadcrumb = null) {
+    if (this._breadcrumbs.children.length > 1 || !breadcrumb && this._breadcrumbs.children.length > 1) {
+      this._breadcrumbs.children[1].remove();
+    }
+
+    if (!breadcrumb) {
+      return;
+    }
+
+    const breadcrumbElement = document.createElement('li');
+    breadcrumbElement.classList.add('breadcrumbs__item');
+    const item = document.createElement('span');
+    item.textContent = '/';
+    breadcrumbElement.append(item);
+    breadcrumbElement.append(capitalizeFirstLetter(breadcrumb));
+    this._breadcrumbs.append(breadcrumbElement);
+  }
+
+  _renderPagination() {
+    const items = [];
+    const dots = document.createElement('li');
+    dots.classList.add('exercises-pagination__dots');
+    dots.textContent = '...';
+    const renderItem = (cssClass, page, svgClass, svgIcon) => {
+      const item = document.createElement('li');
+      item.classList.add('exercises-pagination__item');
+      item.classList.add(cssClass);
+      item.classList.add('exercises-pagination__arrow');
+      item.dataset.page = page;
+      if (this._page === page) {
+        item.classList.add('disabled');
+      }
+      const svgElement = document.createElement('svg');
+      svgElement.classList.add(svgClass);
+      const useElement = document.createElement('use');
+      useElement.setAttribute('href', `${icons}#${svgIcon}`);
+      svgElement.appendChild(useElement);
+      item.append(svgElement);
+      return item;
+    };
+    const renderPreviousButtons = () => {
+      const firstButton = renderItem(
+        'exercises-pagination__beginning',
+        1,
+        'exercises-pagination__beginning__arrow',
+        'pagination-left-double-arrow');
+      const previousButton = renderItem(
+        'exercises-pagination__previous',
+        this._page === 1 ? 1 : this._page - 1,
+        'exercises-pagination__arrow',
+        'pagination-left-single-arrow');
+      items.push(firstButton);
+      items.push(previousButton);
+      if (this._page >= 3) {
+        items.push(dots);
+      }
+    };
+
+    const renderNextButtons = () => {
+      const lastButton = renderItem(
+        'exercises-pagination__last',
+        this._pages,
+        'exercises-pagination__arrow',
+        'pagination-right-double-arrow');
+      const nextButton = renderItem(
+        'exercises-pagination__next',
+        this._page === this._pages ? this._pages : this._page + 1,
+        'exercises-pagination__arrow',
+        'pagination-right-single-arrow');
+
+      if (this._page <= this._pages - 2) {
+        items.push(dots);
+      }
+
+      items.push(nextButton);
+      items.push(lastButton);
+    };
+    const renderPaginationItem = (itemsCount, initialPage = 1) => {
+      const list = [];
+      for (let i = initialPage; i <= itemsCount; i++) {
+        const item = document.createElement('li');
+        item.classList.add('exercises-pagination__item');
+        item.classList.add('exercises-pagination__number');
+        if (i === this._page) {
+          item.classList.add('exercises-pagination__current');
+        }
+        item.textContent = i;
+        item.dataset.page = i;
+        list.push(item);
+      }
+
+      return list;
+    };
+
+    if (this._pages <= 3) {
+      items.push(...renderPaginationItem(this._pages));
+    }
+
+    if (this._pages > 3) {
+      renderPreviousButtons();
+      const initialPage = this._page === 1 ? 1 : this._page === this._pages ? this._page - 2 : this._page - 1;
+      const itemsCount = initialPage + 2;
+      items.push(...renderPaginationItem(itemsCount, initialPage));
+      renderNextButtons();
+    }
+
+    this._paginationElement.innerHTML = '';
+    for (const item of items) {
+      this._paginationElement.innerHTML += item.outerHTML;
+    }
+  }
+
+  async _onPageClick(event) {
+    event.preventDefault();
+    const target = event.target.closest('.exercises-pagination__item');
+    if (!target || target.classList.contains('disabled')) {
+      return;
+    }
+
+    const page = parseInt(target.dataset.page);
+    if (!isNaN(page)) {
+      this._page = page;
+    }
+
+    if (this._isCategory) {
+      await this._fetchFilters();
+      this._renderFilters();
+      return;
+    }
+
+    const request = JSON.parse(localStorage.getItem('exerciseFilter'));
+    request.page = this._page;
+    localStorage.setItem('exerciseFilter', JSON.stringify(request));
+    await this._loadAndRenderExercises(request);
   }
 
   _renderExercises(data) {
@@ -248,10 +400,34 @@ class ExercisesFilterRenderer {
 
     this._exercisesParent.removeEventListener('click', this._onCardClick.bind(this));
     this._exercisesParent.addEventListener('click', this._onCardClick.bind(this));
+
+    this._paginationElement.addEventListener('click', this._onPageClick.bind(this));
+    this._searchContainer.querySelector('.search-button').addEventListener('click', this._onSearchClick.bind(this));
+    this._searchInput.addEventListener('keyup', this._onSearchKeyUp.bind(this));
+  }
+
+  async _onSearchClick(event) {
+    event.preventDefault();
+    const searchValue = this._searchInput.value.trim();
+    if (searchValue) {
+      const request = JSON.parse(localStorage.getItem('exerciseFilter'));
+      request.keyword = searchValue;
+      localStorage.setItem('exerciseFilter', JSON.stringify(request));
+      this._searchInput.value = '';
+      await this._loadAndRenderExercises(request);
+    }
+  }
+
+  async _onSearchKeyUp(event) {
+    event.preventDefault();
+    const searchValue = this._searchInput.value.trim();
+    if (event.key === 'Enter' && searchValue) {
+      await this._onSearchClick(event);
+    }
   }
 
   _buildRequest(filterName, filter) {
-    if (filter.toLowerCase() === 'muscle') {
+    if (filter.toLowerCase() === 'muscles') {
       return new ExerciseFilter(null, filterName, null, null, this._page, this._limit);
     } else if (filter.toLowerCase() === 'equipment') {
       return new ExerciseFilter(null, null, filterName, null, this._page, this._limit);
