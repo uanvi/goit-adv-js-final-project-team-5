@@ -20,7 +20,7 @@
     <title>Your Energy</title>
     <script type="module" crossorigin src="/goit-adv-js-final-project-team-5/index.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/vendor-DYiOAYln.js">
-    <link rel="stylesheet" crossorigin href="/goit-adv-js-final-project-team-5/assets/index-DXGq9_p4.css">
+    <link rel="stylesheet" crossorigin href="/goit-adv-js-final-project-team-5/assets/index-BTCCPTXq.css">
   </head>
   <body>
     <header class="header">
@@ -343,7 +343,7 @@
           rel="noopener noreferrer"
         >
           <svg class="logo-svg">
-            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Bxftab6y.svg#logo-light"></use>
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#logo-light"></use>
           </svg>
         </a>
         <ul class="social-list">
@@ -356,7 +356,7 @@
       rel="noopener noreferrer"
     >
       <svg class="social-icon">
-        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Bxftab6y.svg#facebook"></use>
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#facebook"></use>
       </svg>
     </a>
   </li>
@@ -369,7 +369,7 @@
       rel="noopener noreferrer"
     >
       <svg class="social-icon">
-        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Bxftab6y.svg#instagram"></use>
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#instagram"></use>
       </svg>
     </a>
   </li>
@@ -382,7 +382,7 @@
       rel="noopener noreferrer"
     >
       <svg class="social-icon">
-        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Bxftab6y.svg#youtube"></use>
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#youtube"></use>
       </svg>
     </a>
   </li>
@@ -423,6 +423,132 @@
     </div>
   </div>
 </footer>
+
+    <div class="backdrop visually-hidden" data-modal>
+  <div class="modal">
+    <button class="btn-modal-close" data-modal-close>
+      <svg class="icon icon-modal-close">
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#close"></use>
+      </svg>
+    </button>
+
+    <img src="#" alt="Exercise demonstration gif" class="img-modal-exercise" />
+    <div class="modal-info">
+      <p class="title-modal"></p>
+      <div class="rating divider">
+        <span class="rating-value"></span>
+
+        <div class="rating-stars"></div>
+      </div>
+      <div class="stats divider">
+        <ul class="stats-list"></ul>
+      </div>
+      <div class="description"><p class="desc-text"></p></div>
+      <div class="modal-buttons">
+        <button class="btn-modal-filled btn-modal-add-fav">
+          <span class="btn-fav-text">Add to favorites</span>
+          <svg class="icon icon-fav-btn" width="18" height="18">
+            <use class="icon-fav-btn-use"></use>
+          </svg>
+        </button>
+        <button class="btn-modal-give-rating" data-add-rating-open>
+          Give a rating
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-rating-modal visually-hidden">
+    <button class="btn-modal-close" data-add-rating-close>
+      <svg class="icon icon-modal-close">
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#close"></use>
+      </svg>
+    </button>
+    <form class="add-rating-form" method="post">
+      <p class="add-rating-title">Rating</p>
+
+      <div class="add-rating-stars">
+        <span class="add-rating-value">0</span>
+        <label class="star-radio-btn">
+          <input
+            type="radio"
+            name="radio"
+            class="add-rating-radio-btn visually-hidden"
+            value="1"
+          />
+          <svg class="icon icon-modal-rating-star" width="24" height="24">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#star"></use>
+          </svg>
+        </label>
+        <label class="star-radio-btn">
+          <input
+            type="radio"
+            name="radio"
+            class="add-rating-radio-btn visually-hidden"
+            value="2"
+          />
+          <svg class="icon icon-modal-rating-star" width="24" height="24">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#star"></use>
+          </svg>
+        </label>
+        <label class="star-radio-btn">
+          <input
+            type="radio"
+            name="radio"
+            class="add-rating-radio-btn visually-hidden"
+            value="3"
+          />
+          <svg class="icon icon-modal-rating-star" width="24" height="24">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#star"></use>
+          </svg>
+        </label>
+        <label class="star-radio-btn">
+          <input
+            type="radio"
+            name="radio"
+            class="add-rating-radio-btn visually-hidden"
+            value="4"
+          />
+          <svg class="icon icon-modal-rating-star" width="24" height="24">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#star"></use>
+          </svg>
+        </label>
+        <label class="star-radio-btn">
+          <input
+            type="radio"
+            name="radio"
+            class="add-rating-radio-btn visually-hidden"
+            value="5"
+          />
+          <svg class="icon icon-modal-rating-star" width="24" height="24">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-Dws9ZgDv.svg#star"></use>
+          </svg>
+        </label>
+      </div>
+
+      <input
+        type="email"
+        class="input-modal add-rating-email"
+        name="email"
+        id="email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        placeholder="Email"
+        required
+      />
+      <textarea
+        name="comment"
+        id="comment"
+        class="input-modal add-rating-comment"
+        placeholder="Your comment"
+        required
+      ></textarea>
+      <button type="submit" class="btn-modal-filled btn-add-rating-submit">
+        Send
+      </button>
+    </form>
+  </div>
+</div>
+
 
 
   </body>
