@@ -1,6 +1,7 @@
 import { getFavorites, toggleFavorite } from './storage.js';
 import yourEnergyAPI from './your-energy-api.js';
 import { ExerciseRatingPatchRequest } from './models/exercise-models.js';
+import iziToast from 'izitoast';
 
 const SELECTORS = {
   closeModalButton: '[data-modal-close]',
@@ -37,7 +38,7 @@ const modalContainer = document.querySelector(SELECTORS.modalContainer);
 const exerciseModal = document.querySelector(SELECTORS.exerciseModal);
 const ratingModal = document.querySelector(SELECTORS.ratingModal);
 const addToFavoritesButton = document.querySelector(
-  SELECTORS.addToFavoritesButton
+  SELECTORS.addToFavoritesButton,
 );
 
 let currentExerciseId = null;
@@ -92,7 +93,7 @@ function updateStats(exerciseData) {
   if (exerciseData.burnedCalories)
     statsHTML += createStatItem(
       'Burned Calories',
-      `${exerciseData.burnedCalories}/${exerciseData.time} min`
+      `${exerciseData.burnedCalories}/${exerciseData.time} min`,
     );
 
   statsList.insertAdjacentHTML('beforeend', statsHTML);
@@ -173,7 +174,7 @@ function checkTapInRect(event, rect) {
 
 function initRatingForm() {
   const openRatingModalButton = document.querySelector(
-    SELECTORS.openRatingModalButton
+    SELECTORS.openRatingModalButton,
   );
   document.querySelector(SELECTORS.addRatingValue).textContent = '0';
 
@@ -186,7 +187,7 @@ function initRatingForm() {
   });
 
   const closeRatingModalButton = document.querySelector(
-    SELECTORS.closeRatingModalButton
+    SELECTORS.closeRatingModalButton,
   );
   closeRatingModalButton.addEventListener('click', event => {
     ratingModal.classList.add(CLASS_NAMES.visuallyHidden);
@@ -197,14 +198,14 @@ function initRatingForm() {
 
   function loadRatingModal() {
     const ratingRadioButtons = document.querySelectorAll(
-      SELECTORS.addRatingRadioBtn
+      SELECTORS.addRatingRadioBtn,
     );
 
     ratingRadioButtons.forEach(button => {
       button.addEventListener('click', event => {
         const rating = Number(event.currentTarget.value);
         document.querySelector(
-          SELECTORS.addRatingValue
+          SELECTORS.addRatingValue,
         ).textContent = `${rating}`;
         document
           .querySelectorAll(SELECTORS.iconModalRatingStar)
@@ -235,7 +236,7 @@ async function ratingSubmitListener(event) {
   event.preventDefault();
 
   const rate = parseInt(
-    document.querySelector(SELECTORS.addRatingValue).textContent ?? '0'
+    document.querySelector(SELECTORS.addRatingValue).textContent ?? '0',
   );
   const form = event.target;
   const email = form.elements.email.value;
@@ -243,29 +244,23 @@ async function ratingSubmitListener(event) {
 
   let notification = new Notification();
   if (!rate) {
-    notification.info('Choose your rating');
+    notification.warning('Choose your rating');
   } else if (!email) {
-    notification.info('Enter your email');
+    notification.warning('Enter your email');
   } else if (!review) {
-    notification.info('Leave a comment');
+    notification.warning('Leave a comment');
   } else {
-    try {
-      const request = new ExerciseRatingPatchRequest(rate, email, review);
-      const nextExercise = await yourEnergyAPI.patchExerciseRating(
-        currentExerciseId,
-        request
-      );
-      clearRatingForm(form);
-      notification.success('Rating successfully updated');
-      ratingModal.classList.add(CLASS_NAMES.visuallyHidden);
-      exerciseModal.classList.remove(CLASS_NAMES.visuallyHidden);
+    const request = new ExerciseRatingPatchRequest(rate, email, review);
+    const nextExercise = await yourEnergyAPI.patchExerciseRating(
+      currentExerciseId,
+      request,
+    );
+    clearRatingForm(form);
+    notification.success('Rating successfully updated');
+    ratingModal.classList.add(CLASS_NAMES.visuallyHidden);
+    exerciseModal.classList.remove(CLASS_NAMES.visuallyHidden);
 
-      updateModalContent(nextExercise);
-    } catch (error) {
-      notification.error(
-        `Error: ${error?.response?.data?.message ?? error.message}`
-      );
-    }
+    updateModalContent(nextExercise);
   }
   event.stopImmediatePropagation();
 }
@@ -273,7 +268,7 @@ async function ratingSubmitListener(event) {
 // Open Modal
 export function initModalListeners() {
   const openModalButtons = document.querySelectorAll(
-    SELECTORS.openModalButtons
+    SELECTORS.openModalButtons,
   );
   openModalButtons.forEach(button => {
     button.addEventListener('click', event => {
@@ -316,14 +311,25 @@ function addStars(starsCount, rating) {
 }
 
 class Notification {
-  info(message) {
-    alert(message);
+  warning(message) {
+    iziToast.warning({
+      message: message,
+      position: 'topCenter',
+    });
   }
+
   success(message) {
-    alert(message);
+    iziToast.success({
+      message: message,
+      position: 'topCenter',
+    });
   }
+
   error(message) {
-    alert(message);
+    iziToast.error({
+      message: message,
+      position: 'topCenter',
+    });
   }
 }
 

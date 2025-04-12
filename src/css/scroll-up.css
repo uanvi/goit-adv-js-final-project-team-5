@@ -34,7 +34,7 @@
   pointer-events: auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #scrollUpBtn {
     bottom: 20px;
     right: 20px;

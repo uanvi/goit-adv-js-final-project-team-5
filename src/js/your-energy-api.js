@@ -2,6 +2,7 @@ import axios from 'axios';
 import { FilterRequest, FilterResponse } from './models/filter-models.js';
 import { ExerciseFilter, ExerciseModel, ExerciseResponse } from './models/exercise-models.js';
 import QuoteModel from './models/quote-model.js';
+import handleApiError from './utils/errorHandler.js'
 
 const API_URL = 'https://your-energy.b.goit.study/api';
 
@@ -32,7 +33,7 @@ class YourEnergyAPI {
       return new FilterResponse(response.data);
     } catch (error) {
       console.error('Error fetching filters:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 
@@ -49,7 +50,7 @@ class YourEnergyAPI {
       return new ExerciseResponse(response.data);
     } catch (error) {
       console.error('Error fetching exercises by filter:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 
@@ -64,7 +65,7 @@ class YourEnergyAPI {
       return new ExerciseModel(response.data);
     } catch (error) {
       console.error('Error fetching exercises by ID:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 
@@ -80,7 +81,7 @@ class YourEnergyAPI {
       return new ExerciseModel(response.data);
     } catch (error) {
       console.error('Error updating exercise rating:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 
@@ -94,7 +95,7 @@ class YourEnergyAPI {
       return new QuoteModel(response.data);
     } catch (error) {
       console.error('Error fetching quote of the day:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 
@@ -109,7 +110,7 @@ class YourEnergyAPI {
       return response.data.message;
     } catch (error) {
       console.error('Error posting subscription:', error);
-      throw error;
+      handleApiError(error);
     }
   }
 }

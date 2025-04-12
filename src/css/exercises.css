@@ -384,7 +384,7 @@ img.exercises-filters__image {
 @media (min-width: 768px) {
   .exercises-list{
     flex-direction: row;
-    gap: 32px 15px;
+    gap: 32px 14px;
     flex-wrap: wrap;
   }
 
