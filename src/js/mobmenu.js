@@ -24,8 +24,7 @@ const parseKeydown = event => {
 };
 
 const parseClick = event => {
-  if (event.target === document.querySelector('.menu-backdrop')) toggleMenu();
-
+  if (event.target === backdropEl) toggleMenu();
   const closestLink = event.target.closest('a');
 
   if (closestLink?.classList.contains('nav-link')) toggleMenu();
