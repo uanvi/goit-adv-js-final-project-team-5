@@ -1,19 +1,39 @@
 /* Styles for Mobile devices */
 .container {
+  display: flex;
+  flex-direction: row;
   min-width: 320px;
   max-width: 375px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+    padding: 0 32px;
   }
 }
 /* Styles for Desktop devices */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .container {
-    max-width: 1200px;
+    max-width: 1440px;
+  }
+}
+
+.main-container {
+  margin-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    margin-bottom: 100px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main-container {
+    margin-bottom: 132px;
   }
 }

@@ -24,7 +24,7 @@ class YourEnergyAPI {
    * @param {FilterRequest} filterRequest
    * @returns {Promise<FilterResponse>}
    */
-  async getFilters(filterRequest) {
+  async fetchFilters(filterRequest) {
     try {
       const response = await this._api.get('/filters', {
         params: filterRequest,

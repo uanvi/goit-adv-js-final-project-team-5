@@ -1,0 +1,127 @@
+/* #region Navbar */
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 34px;
+
+  background-color: var(--color-black);
+  border-radius: 60px;
+
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 34px;
+    display: flex;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 14px 50px;
+  }
+}
+
+.nav-list-item {
+  padding: 6px 12px;
+}
+
+.nav-list-link {
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.nav-list-link.active {
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+/* #endregion Navbar */
+
+/* #region Socials links header */
+/* ul */
+.nav-social-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+/* li */
+.nav-social-list-item {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+}
+.header .nav-social-list-item {
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-white);
+  transition: var(--trns);
+  transition-property: background-color;
+}
+.header .nav-social-list-item:hover,
+.header .nav-social-list-item:focus {
+  background-color: var(--color-black);
+  fill: rgba(255, 255, 255, 0.87);
+}
+
+/* icons */
+.nav-social-list-link {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.header .nav-social-list-link .nav-social-list-icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-black);
+  transition: var(--trns);
+  transition-property: fill;
+}
+
+.header .nav-social-list-item:hover .nav-social-list-icon,
+.header .nav-social-list-item:focus .nav-social-list-icon {
+  fill: var(--color-white);
+}
+/* #endregion Socials links header */
+
+/* #region Burger */
+.mac-menu {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-black);
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.mac-menu:hover,
+.mac-menu:focus {
+  background-color: transparent;
+}
+
+.mac-menu-icon {
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+
+  width: 32px;
+  height: 32px;
+}
+/* #endregion Burger */
