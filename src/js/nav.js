@@ -5,12 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     .split('/')
     .filter(s => s && s.length > 0);
 
-  let currentPath;
-  if (parts.length == 0) {
-    currentPath = 'index.html';
-  } else {
+  let currentPath = '';
+  if (parts.length !== 0) {
     currentPath = parts[parts.length - 1];
   }
+
+  currentPath = currentPath.endsWith('.html') ? currentPath : currentPath + '/index.html';
 
   navLinks.forEach(link => {
     if (link.getAttribute('href').endsWith(currentPath)) {
@@ -23,8 +23,4 @@ document.addEventListener('DOMContentLoaded', function() {
       link.classList.add('active');
     }
   });
-
-  // if (!document.querySelector('.nav-link.active')) {
-  //   navLinks[0].classList.add('active');
-  // }
 });
