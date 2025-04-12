@@ -1,4 +1,4 @@
-/* #region Navigation */
+/* #region Navbar */
 .nav-list {
   display: flex;
   flex-direction: row;
@@ -35,9 +35,9 @@
   color: var(--color-black);
   background-color: var(--color-white);
 }
-/* #endregion Navigation */
+/* #endregion Navbar */
 
-/* #region Socials */
+/* #region Socials links header */
 /* ul */
 .nav-social-list {
   margin: 0;
@@ -60,7 +60,7 @@
 }
 .header .nav-social-list-item {
   border: 1px solid var(--color-grey);
-  background-color: rgba(255, 255, 255, 0.87);
+  background-color: var(--color-white);
   transition: var(--trns);
   transition-property: background-color;
 }
@@ -89,4 +89,39 @@
 .header .nav-social-list-item:focus .nav-social-list-icon {
   fill: var(--color-white);
 }
-/* #endregion Socials */
+/* #endregion Socials links header */
+
+/* #region Burger */
+.mac-menu {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-black);
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+.mac-menu:hover,
+.mac-menu:focus {
+  background-color: transparent;
+}
+
+.mac-menu-icon {
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+
+  width: 32px;
+  height: 32px;
+}
+/* #endregion Burger */
