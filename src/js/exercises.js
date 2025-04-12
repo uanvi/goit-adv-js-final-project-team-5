@@ -79,15 +79,7 @@ class ExerciseElement {
     ratingElement.append(span);
     leftBlock.append(ratingElement);
 
-    const startButton = document.createElement('button');
-    startButton.type = 'button';
-    startButton.classList.add('exercise-header__start-button');
-    startButton.classList.add('btn-start');
-    startButton.textContent = 'Start';
-    startButton.value = id;
-    startButton.setAttribute('data-modal-open', '');
-    startButton.append(this._createSvg('exercise-start', 'exercise-arrow', 13, 13));
-    this._header.append(leftBlock, startButton);
+    this.initStartButton(leftBlock, id);
   }
 
   addName(workoutName) {
@@ -142,21 +134,13 @@ class ExerciseElement {
     const removeButton = document.createElement('button');
     removeButton.classList.add('exercise-header__remove-button');
     removeButton.append(this._createSvg('trash', 'exercise-trash')); // You can use a specific "remove" icon
-
-    // Add event listener to handle removal logic
-    removeButton.addEventListener('click', (event) => {
-      // Retrieve the exercise ID (stored in the element's dataset)
-      const exerciseId = this._element.dataset.id;
-
-      // Call your removal logic here
-      this.handleRemoveClick(event, exerciseId);
-    });
-
-    // Add the "Remove" button to the header
     leftBlock.append(removeButton);
 
+    this.initStartButton(leftBlock, id);
+  }
+
+  initStartButton(leftBlock, id) {
     const startButton = document.createElement('button');
-    startButton.type = 'button';
     startButton.classList.add('exercise-header__start-button');
     startButton.classList.add('btn-start');
     startButton.textContent = 'Start';
@@ -164,26 +148,6 @@ class ExerciseElement {
     startButton.setAttribute('data-modal-open', '');
     startButton.append(this._createSvg('exercise-start', 'exercise-arrow', 13, 13));
     this._header.append(leftBlock, startButton);
-  }
-
-  handleRemoveClick(event, exerciseId) {
-    event.preventDefault();  // Prevent default button behavior (if any)
-
-    // You can trigger a removal function here, for example:
-    // favoriteRenderer.removeFavoriteAndRender(exerciseId);
-    // or directly remove from localStorage:
-    removeExerciseFromFavorite(exerciseId);
-
-    // Optionally, you can update the UI after removal, e.g., re-render the favorites list.
-    this.removeExerciseFromUI(exerciseId);
-  }
-
-  // Function to remove the exercise from the UI (if needed)
-  removeExerciseFromUI(exerciseId) {
-    const exerciseElement = document.querySelector(`[data-id="${exerciseId}"]`);
-    if (exerciseElement) {
-      exerciseElement.remove();
-    }
   }
 }
 

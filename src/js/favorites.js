@@ -1,6 +1,6 @@
 // Initialize the ExerciseFavoriteRenderer to manage favorites
 import { ExerciseElement } from './exercises.js';
-import { getFavorites } from './utils/favoritesStorage.js';
+import { getFavorites, removeExerciseFromFavorite } from './utils/favoritesStorage.js';
 import yourEnergyAPI from './your-energy-api.js';
 import { initModalListeners } from './modal.js';
 
@@ -10,19 +10,23 @@ class ExerciseFavoriteRenderer {
     if (!this._favoritesParent) {
       throw new Error('Favorites list parent element not found');
     }
-    this._favorites = getFavorites();
+    this.initFavorites();
   }
 
+  initFavorites() {
+    this._favorites = getFavorites();
+    if (this._favorites.length === 0) {
+      this._favoritesParent.innerHTML = '<p>No favorites added yet.</p>';
+    }
+  }
 
   // Function to fetch exercises by ID and render them
   async loadAndRenderFavorites() {
-    this._favoritesParent.innerHTML = ''; // Clear any existing content
-
     if (this._favorites.length === 0) {
-      this._favoritesParent.innerHTML = '<p>No favorites added yet.</p>';
       return;
     }
 
+    this._favoritesParent.innerHTML = ''; // Clear any existing content
     const exercises = await this.fetchExercisesByIds(this._favorites);
     this.renderFavorites(exercises);
   }
@@ -53,14 +57,27 @@ class ExerciseFavoriteRenderer {
       this._favoritesParent.innerHTML += element.outerHTML;
     }
     initModalListeners();
+    this.initRemoveButtons();
+  }
 
+  initRemoveButtons() {
+    document
+      .querySelectorAll('.exercise-header__remove-button')
+      .forEach(element => element.addEventListener('click', event => this.handleRemoveClick(event)));
+  }
+
+  async handleRemoveClick(event) {
+    event.preventDefault();
+    const exerciseElement = event.target.closest('.exercises-list__item');
+
+    removeExerciseFromFavorite(exerciseElement.dataset.id);
+    this.initFavorites();
+    exerciseElement.remove();
   }
 }
-
-const favoriteRenderer = new ExerciseFavoriteRenderer();
 
 
 // Load and render the favorites when the page is ready
 document.addEventListener('DOMContentLoaded', () => {
-  favoriteRenderer.loadAndRenderFavorites();
+  new ExerciseFavoriteRenderer().loadAndRenderFavorites();
 });
