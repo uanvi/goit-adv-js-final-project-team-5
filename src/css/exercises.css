@@ -468,5 +468,6 @@ svg.exercise-arrow {
 li.exercises-filters__item:hover {
   cursor: pointer;
   transform: translateY(-2px);
+  transition: all 0.3s ease;
   box-shadow: 0 4px 4px 1px var(--color-modal-backdrop);
 }
