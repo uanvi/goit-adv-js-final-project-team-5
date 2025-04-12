@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     currentPath = parts[parts.length - 1];
   }
 
-  currentPath = currentPath.endsWith('.html') ? currentPath : currentPath + '/index.html';
+  currentPath = currentPath.endsWith('.html') ? currentPath : '/index.html';
 
   navLinks.forEach(link => {
     if (link.getAttribute('href').endsWith(currentPath)) {
