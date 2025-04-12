@@ -12,6 +12,7 @@
 
 /* Sections style */
 @import url('./header.css');
+@import url('./mobmenu.css');
 @import url('./nav.css');
 @import url('./hero.css');
 @import url('./footer.css');
@@ -24,4 +25,3 @@
 @import url('./quote.css');
 @import url('./filters.css');
 @import url('./modal.css');
-
