@@ -1,15 +1,46 @@
-export const handleApiError = error => {
+import iziToast from 'izitoast';
+
+function handleApiError(error) {
   if (error.response) {
-    const messages = {
-      400: 'Bad request: invalid request body.',
-      404: 'Endpoint not found.',
-      409: 'You are already subscribed.',
-      500: 'Server error: please try again later.',
-    };
-    alert(messages[error.response.status] || 'Unknown server error occurred.');
+    switch (error.response.status) {
+      case 400:
+        iziToast.warning({
+          message: 'Bad request: invalid request body.',
+          position: 'topCenter'
+        });
+        break;
+      case 404:
+        iziToast.error({
+          message: 'Endpoint not found.',
+          position: 'topCenter'
+        });
+        break;
+      case 409:
+        iziToast.warning({
+          message: 'You are already subscribed.',
+          position: 'topCenter'
+        });
+        break;
+      case 500:
+        iziToast.error({
+          message: 'Server error: please try again later.',
+          position: 'topCenter'
+        });
+        break;
+      default:
+        iziToast.error({
+          message: 'Unknown server error occurred.',
+          position: 'topCenter'
+        });
+    }
   } else {
-    alert('Unexpected error. Please check your connection and try again.');
+    iziToast.error({
+      message: 'Unexpected error. Please check your connection and try again.'
+    });
   }
 
   console.error('API Error:', error);
-};
+  throw error;
+}
+
+export default handleApiError;
