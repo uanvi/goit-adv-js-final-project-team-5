@@ -149,7 +149,6 @@ class ExerciseElement {
       const exerciseId = this._element.dataset.id;
 
       // Call your removal logic here
-      console.log(`Removing exercise with ID: ${exerciseId}`);
       this.handleRemoveClick(event, exerciseId);
     });
 
@@ -169,9 +168,6 @@ class ExerciseElement {
 
   handleRemoveClick(event, exerciseId) {
     event.preventDefault();  // Prevent default button behavior (if any)
-
-    // Perform the removal action
-    console.log(`Exercise with ID ${exerciseId} will be removed`);
 
     // You can trigger a removal function here, for example:
     // favoriteRenderer.removeFavoriteAndRender(exerciseId);
