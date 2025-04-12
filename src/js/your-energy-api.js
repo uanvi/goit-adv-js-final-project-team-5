@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FilterRequest, FilterResponse } from './models/filter-models.js';
 import { ExerciseFilter, ExerciseModel, ExerciseResponse } from './models/exercise-models.js';
 import QuoteModel from './models/quote-model.js';
-import handleApiError from './utils/errorHandler.js'
+import handleApiError from './utils/errorHandler.js';
 
 const API_URL = 'https://your-energy.b.goit.study/api';
 

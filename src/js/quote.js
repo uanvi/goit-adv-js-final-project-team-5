@@ -6,16 +6,6 @@ import yourEnergyAPI from './your-energy-api.js';
 
   class Quote {
     #date;
-    /**
-     * @param {Date} date
-     */
-    set date(date) {
-      this.#date = this.#formatDate(date);
-    }
-
-    get date() {
-      return this.#date;
-    }
 
     /**
      * @param {String} text
@@ -26,6 +16,17 @@ import yourEnergyAPI from './your-energy-api.js';
       this.text = text;
       this.author = author;
       this.date = date || new Date();
+    }
+
+    get date() {
+      return this.#date;
+    }
+
+    /**
+     * @param {Date} date
+     */
+    set date(date) {
+      this.#date = this.#formatDate(date);
     }
 
     isFresh() {
@@ -48,7 +49,7 @@ import yourEnergyAPI from './your-energy-api.js';
   class QuoteProvider {
     static #load() {
       const quoteData = JSON.parse(localStorage.getItem(storageKey));
-      if(quoteData) {
+      if (quoteData) {
         quoteData.date = new Date(quoteData?.date);
       }
       return quoteData ? new Quote(quoteData) : null;

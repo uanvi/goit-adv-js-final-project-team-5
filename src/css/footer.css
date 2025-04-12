@@ -172,10 +172,12 @@
   transform: scale(1);
   transition: transform var(--animation);
 }
+
 .copyright-link:hover,
 .copyright-link:focus {
   transform: scale(1.03);
 }
+
 .copyright-link.active {
   border: 1px solid var(--color-white);
   border-radius: 20px;
@@ -186,6 +188,7 @@
   content: '/';
   margin-left: 8px;
 }
+
 .copyright-item:first-child {
   margin-right: 6px;
 }

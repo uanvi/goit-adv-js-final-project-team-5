@@ -3,9 +3,9 @@
     <div class="footer-content">
       <div class="footer-logo-social">
         <a
+          aria-label="Site logo"
           class="footer-logo"
           href="./index.html"
-          aria-label="Site logo"
           rel="noopener noreferrer"
         >
           <svg class="logo-svg">
@@ -23,12 +23,12 @@
           <label for="email">
             Subscribe and learn about new exercises!
             <input
-              type="email"
               id="email"
               name="email"
+              pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
               placeholder="Email"
               required
-              pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              type="email"
             />
           </label>
           <button type="submit">Send</button>
@@ -42,17 +42,17 @@
         <ul class="footer-policy-links">
           <li class="copyright-item">
             <a
+              aria-label="privacy policy link"
               class="copyright-link"
               href="./privacy-policy.html"
-              aria-label="privacy policy link"
             >Privacy Policy</a
             >
           </li>
           <li class="copyright-item">
             <a
+              aria-label="terms of service link"
               class="copyright-link"
               href="./terms.html"
-              aria-label="terms of service link"
             >Terms of Service</a
             >
           </li>

@@ -96,6 +96,7 @@
     justify-content: flex-end;
   }
 }
+
 /********************** End of Exercises section **********************/
 
 /********************** Common classes **********************/
@@ -178,6 +179,7 @@
     margin-inline-end: 0.5rem;
   }
 }
+
 /********************** End of Common classes **********************/
 
 .exercises-list__item {
@@ -253,7 +255,7 @@
   margin-left: 9px;
 }
 
-.exercise-header__start-button{
+.exercise-header__start-button {
   background: none;
   border: none;
   font-size: 1rem;
@@ -264,7 +266,7 @@
   font-family: "DM Sans", sans-serif;
 }
 
-.exercise-header__start-button:hover{
+.exercise-header__start-button:hover {
   color: var(--color-white);
   background-color: var(--color-black);
   border-radius: 30px;
@@ -326,7 +328,7 @@
   vertical-align: bottom;
 }
 
-.exercises-list{
+.exercises-list {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -336,7 +338,7 @@
   padding: 0;
 }
 
-.exercises-filters__item{
+.exercises-filters__item {
   position: relative;
   border-radius: 24px;
   overflow: hidden;
@@ -351,7 +353,7 @@ img.exercises-filters__image {
   min-width: 310px;
 }
 
-.exercises-filters__overlay{
+.exercises-filters__overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -382,7 +384,7 @@ img.exercises-filters__image {
 }
 
 @media (min-width: 768px) {
-  .exercises-list{
+  .exercises-list {
     flex-direction: row;
     gap: 32px 14px;
     flex-wrap: wrap;
@@ -396,7 +398,7 @@ img.exercises-filters__image {
 }
 
 @media (min-width: 1440px) {
-  .exercises-list{
+  .exercises-list {
     gap: 32px 15px;
   }
 
@@ -436,7 +438,7 @@ svg.exercise-arrow {
 }
 
 .exercises-pagination__item.disabled,
-.exercises-pagination__item.disabled svg{
+.exercises-pagination__item.disabled svg {
   color: var(--color-grey);
   border-color: var(--color-grey);
   cursor: default;

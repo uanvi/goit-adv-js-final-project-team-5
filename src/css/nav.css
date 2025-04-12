@@ -35,6 +35,7 @@
   color: var(--color-black);
   background-color: var(--color-white);
 }
+
 /* #endregion Navbar */
 
 /* #region Socials links header */
@@ -58,12 +59,14 @@
   padding: 8px;
   border-radius: 10px;
 }
+
 .header .nav-social-list-item {
   border: 1px solid var(--color-grey);
   background-color: var(--color-white);
   transition: var(--trns);
   transition-property: background-color;
 }
+
 .header .nav-social-list-item:hover,
 .header .nav-social-list-item:focus {
   background-color: var(--color-black);
@@ -89,6 +92,7 @@
 .header .nav-social-list-item:focus .nav-social-list-icon {
   fill: var(--color-white);
 }
+
 /* #endregion Socials links header */
 
 /* #region Burger */
@@ -110,6 +114,7 @@
     display: none;
   }
 }
+
 .mac-menu:hover,
 .mac-menu:focus {
   background-color: transparent;
@@ -124,4 +129,5 @@
   width: 32px;
   height: 32px;
 }
+
 /* #endregion Burger */

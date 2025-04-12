@@ -17,29 +17,20 @@
     referrerpolicy="no-referrer"
     rel="stylesheet"
   />
-  <title>Your Energy</title>
+  <title>Your Energy Favorites</title>
   <link href="./css/styles.css" rel="stylesheet" />
 </head>
 <body>
 <load icon-path="img/sprite.svg#logo" src="./partials/header.html" />
 
 <main>
-  <!-- Loads the specified .html file -->
-  <load src="./partials/hero.html" />
-  <load src="./partials/filters.html" />
-  <section class="container main-container">
-    <div class="exercises-row">
-      <load src="./partials/exercises.html" />
-      <load src="./partials/quotes.html" />
-    </div>
-  </section>
+  <div class="container">
+    <load src="./partials/favorite.html" />
+  </div>
 </main>
-
-<load src="./partials/footer.html" />
 <load src="./partials/modal.html" />
 
 <script src="./js/nav.js" type="module"></script>
-<script src="./js/main.js" type="module"></script>
-<script src="./js/subscription.js" type="module"></script>
+<script src="./js/favorites.js" type="module"></script>
 </body>
 </html>

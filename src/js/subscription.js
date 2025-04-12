@@ -1,5 +1,4 @@
 import yourEnergyAPI from './your-energy-api.js';
-import handleApiError from './utils/errorHandler.js';
 import iziToast from 'izitoast';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const message = await yourEnergyAPI.postSubscription(
-      emailInput.value.trim()
+      emailInput.value.trim(),
     );
     handleSuccess(message);
   });

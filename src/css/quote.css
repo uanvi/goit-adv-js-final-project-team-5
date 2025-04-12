@@ -35,9 +35,11 @@
   border-radius: 50%;
   padding: 0 4px;
 }
+
 .quote-recommendation > .quote-icon-wrapper {
   background-color: var(--color-black);
 }
+
 .quote-icon {
   width: 20px;
   height: 20px;
@@ -63,6 +65,7 @@
   line-height: 1em;
   color: var(--color-white);
 }
+
 .quote-recommendation-title {
   font-weight: 500;
   font-size: 20px;
@@ -74,12 +77,14 @@
   line-height: 1.1em;
   color: var(--color-darkgrey);
 }
+
 .quote-text,
 .quote-recommendation-text {
   font-size: 14px;
   line-height: 1.1em;
   color: var(--color-text-secondary);
 }
+
 .quote-recommendation-text {
   color: inherit;
 }

@@ -29,11 +29,11 @@ class FilterModel {
  * @property {number} limit - The number of items per page.
  */
 class FilterRequest {
-    constructor(filter, page, limit) {
-        this.filter = filter;
-        this.page = page;
-        this.limit = limit;
-    }
+  constructor(filter, page, limit) {
+    this.filter = filter;
+    this.page = page;
+    this.limit = limit;
+  }
 }
 
 /**
@@ -49,18 +49,18 @@ class FilterRequest {
  * @property {number} perPage - The number of items per page.
  * @property {number} totalPages - The total number of pages.
  */
-class FilterResponse extends BaseApiResponse{
-    constructor(response) {
-        super(response);
-    }
+class FilterResponse extends BaseApiResponse {
+  constructor(response) {
+    super(response);
+  }
 
-    /**
-     * Get the array of FilterModel instances.
-     * @returns {Array} The array of FilterModel instances.
-     */
-    getFilters() {
-      return this.results.map(filter => new FilterModel(filter.filter, filter.name, filter.imgURL));
-    }
+  /**
+   * Get the array of FilterModel instances.
+   * @returns {Array} The array of FilterModel instances.
+   */
+  getFilters() {
+    return this.results.map(filter => new FilterModel(filter.filter, filter.name, filter.imgURL));
+  }
 }
 
 export { FilterModel, FilterRequest, FilterResponse };
