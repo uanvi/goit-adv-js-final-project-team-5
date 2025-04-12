@@ -16,7 +16,10 @@ class ExerciseFavoriteRenderer {
   initFavorites() {
     this._favorites = getFavorites();
     if (this._favorites.length === 0) {
-      this._favoritesParent.innerHTML = '<p>No favorites added yet.</p>';
+      this._favoritesParent.innerHTML = '<li class="no-favorites">' +
+        '<p>It appears that you haven\'t added any exercises to your favorites yet. To get started, ' +
+        'you can add exercises that you like to your favorites for easier access in the future.</p>' +
+        '</li>';
     }
   }
 
