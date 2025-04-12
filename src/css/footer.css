@@ -138,6 +138,7 @@
 }
 
 .subscription-form label {
+  font-size: 18px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
