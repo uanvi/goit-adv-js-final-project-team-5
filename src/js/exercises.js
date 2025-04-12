@@ -275,7 +275,6 @@ class ExercisesFilterRenderer {
       const request = this._buildRequest(filterName, filter);
       localStorage.setItem('exerciseFilter', JSON.stringify(request));
       await this._loadAndRenderExercises(request);
-      initModalListeners();
     }
   }
 
@@ -284,6 +283,7 @@ class ExercisesFilterRenderer {
     this._renderExercises(response);
     this._renderPagination();
     this._isCategory = false;
+    initModalListeners();
   }
 
   _addBreadcrumbs(breadcrumb = null) {
