@@ -1,14 +1,23 @@
 import yourEnergyAPI from './your-energy-api.js';
-import { handleApiError } from './utils/errorHandler.js';
+import handleApiError from './utils/errorHandler.js';
+import iziToast from 'izitoast';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('subscriptionForm');
   const emailInput = form?.elements?.email;
 
-  const showAlert = message => alert(message);
+  const showAlert = message => {
+    iziToast.warning({
+      message: message,
+      position: 'topCenter',
+    });
+  };
 
   const handleSuccess = message => {
-    showAlert(message);
+    iziToast.success({
+      message: message,
+      position: 'topCenter',
+    });
     emailInput.value = '';
   };
 
@@ -20,13 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    try {
-      const message = await yourEnergyAPI.postSubscription(
-        emailInput.value.trim()
-      );
-      handleSuccess(message);
-    } catch (error) {
-      handleApiError(error);
-    }
+    const message = await yourEnergyAPI.postSubscription(
+      emailInput.value.trim()
+    );
+    handleSuccess(message);
   });
 });

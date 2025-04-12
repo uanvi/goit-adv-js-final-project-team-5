@@ -7,6 +7,8 @@ import {
 import { createScrollUpButton } from './components/scroll-up-button.js';
 import { Loader } from './components/loader.js';
 
+import 'izitoast/dist/css/iziToast.min.css';
+
 const loader = new Loader();
 
 // example Filters

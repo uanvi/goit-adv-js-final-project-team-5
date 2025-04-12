@@ -1,5 +1,6 @@
 /* Styles for Mobile devices */
 .container {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   min-width: 320px;
