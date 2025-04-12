@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  if (!document.querySelector('.nav-link.active')) {
-    navLinks[0].classList.add('active');
-  }
+  // if (!document.querySelector('.nav-link.active')) {
+  //   navLinks[0].classList.add('active');
+  // }
 });
