@@ -1,3 +1,4 @@
+import icons from '../img/svg/sprites.svg';
 import yourEnergyAPI from './your-energy-api.js';
 import { ExerciseRatingPatchRequest } from './models/exercise-models.js';
 import iziToast from 'izitoast';
@@ -113,9 +114,12 @@ function updateFavoriteButtonState() {
     ? 'Remove from favorites'
     : 'Add to favorites';
 
-  document
-    .querySelector(SELECTORS.iconFavBtnUse)
-    .setAttribute('href', `./img/svg/sprites.svg#${isFavorite ? 'trash-bin' : 'heart'}`);
+  const iconUse = document
+    .querySelector(SELECTORS.iconFavBtnUse);
+  const parent = iconUse.parentNode;
+  parent.innerHTML = '';
+  iconUse.setAttribute('href', `${icons}#${isFavorite ? 'trash-bin' : 'heart'}`);
+  parent.innerHTML = iconUse.outerHTML;
 }
 
 function addFavoriteButtonListener() {
