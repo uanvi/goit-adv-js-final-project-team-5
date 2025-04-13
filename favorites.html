@@ -20,10 +20,10 @@
   <title>Your Energy Favorites</title>
   <script type="module" crossorigin src="/goit-adv-js-final-project-team-5/favorites.js"></script>
   <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/vendor-RkJB11I5.js">
-  <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/nav-DHmH42_4.js">
-  <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/quote-DqOfAkG-.js">
+  <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/nav-DXKH053a.js">
+  <link rel="modulepreload" crossorigin href="/goit-adv-js-final-project-team-5/assets/quote-HeTNRGFN.js">
   <link rel="stylesheet" crossorigin href="/goit-adv-js-final-project-team-5/assets/vendor-D_nxXpU-.css">
-  <link rel="stylesheet" crossorigin href="/goit-adv-js-final-project-team-5/assets/nav-CK8BkQrS.css">
+  <link rel="stylesheet" crossorigin href="/goit-adv-js-final-project-team-5/assets/nav-CyW2KGeF.css">
 </head>
 <body>
 <header class="header">
@@ -113,7 +113,7 @@
 
 
 <main>
-  <div class="container">
+  <div class="container main-container">
     <section class="favorites">
   <h1 class="favorites-title">Favorites</h1>
 
@@ -203,6 +203,112 @@
 </section>
   </div>
 </main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo-social">
+        <a
+          aria-label="Site logo"
+          class="footer-logo"
+          href="./index.html"
+          rel="noopener noreferrer"
+        >
+          <svg class="logo-svg">
+            <use href="/goit-adv-js-final-project-team-5/assets/sprites-D3RtuGQY.svg#logo-light"></use>
+          </svg>
+        </a>
+        <ul class="social-list">
+  <li class="social-item">
+    <a
+      aria-label="Facebook"
+      class="social-link"
+      href="https://www.facebook.com/goITclub/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <svg class="social-icon">
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-D3RtuGQY.svg#facebook"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="social-item">
+    <a
+      aria-label="Instagram"
+      class="social-link"
+      href="https://www.instagram.com/goitclub/ "
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <svg class="social-icon">
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-D3RtuGQY.svg#instagram"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="social-item">
+    <a
+      aria-label="Youtube"
+      class="social-link"
+      href="https://www.youtube.com/c/GoIT"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <svg class="social-icon">
+        <use href="/goit-adv-js-final-project-team-5/assets/sprites-D3RtuGQY.svg#youtube "></use>
+      </svg>
+    </a>
+  </li>
+</ul>
+
+      </div>
+
+      <div class="footer-form">
+        <p class="footer-form-text">
+          Transforming your <em>body</em> shape with us
+        </p>
+        <form class="subscription-form" id="subscriptionForm" novalidate>
+          <label for="email">
+            Subscribe and learn about new exercises!
+            <input
+              id="email"
+              name="email"
+              pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              placeholder="Email"
+              required
+              type="email"
+            />
+          </label>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <p class="footer-copyright-text">Your Energy. All rights reserved.</p>
+      <div class="footer-copyright-links">
+        <ul class="footer-policy-links">
+          <li class="copyright-item">
+            <a
+              aria-label="privacy policy link"
+              class="copyright-link"
+              href="./privacy-policy.html"
+            >Privacy Policy</a
+            >
+          </li>
+          <li class="copyright-item">
+            <a
+              aria-label="terms of service link"
+              class="copyright-link"
+              href="./terms.html"
+            >Terms of Service</a
+            >
+          </li>
+        </ul>
+        <p class="copyright">&#169; 2025</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <div class="backdrop visually-hidden" data-modal>
   <div class="modal">
     <button class="btn-modal-close" data-modal-close>
@@ -227,7 +333,7 @@
         <button class="btn-modal-filled btn-modal-add-fav">
           <span class="btn-fav-text">Add to favorites</span>
           <svg class="icon icon-fav-btn" height="18" width="18">
-            <use class="icon-fav-btn-use"></use>
+            <use class="icon-fav-btn-use" href="/goit-adv-js-final-project-team-5/assets/sprites-D3RtuGQY.svg#heart"></use>
           </svg>
         </button>
         <button class="btn-modal-give-rating" data-add-rating-open>
