@@ -385,13 +385,14 @@ class ExercisesFilterRenderer {
   _renderExercises(data) {
     this._exercisesParent.innerHTML = '';
 
-    if (!data || !data.results || data.results.length === 0) {
+    this._pages = Number(data?.totalPages);
+    const exercises = data.getExercises();
+
+    if (exercises.length === 0) {
       this._exercisesParent.innerHTML = '<p>No exercises found.</p>';
       return;
     }
 
-    this._pages = data.totalPages;
-    const exercises = data.getExercises();
 
     this._elements = exercises.map((exercise) => {
       const exerciseElement = new ExerciseElement();
@@ -436,19 +437,16 @@ class ExercisesFilterRenderer {
   async _onSearchClick(event) {
     event.preventDefault();
     const searchValue = this._searchInput.value.trim();
-    if (searchValue) {
-      const request = JSON.parse(localStorage.getItem('exerciseFilter'));
-      request.keyword = searchValue;
-      localStorage.setItem('exerciseFilter', JSON.stringify(request));
-      this._searchInput.value = '';
-      await this._loadAndRenderExercises(request);
-    }
+    const request = JSON.parse(localStorage.getItem('exerciseFilter'));
+    request.keyword = searchValue;
+    localStorage.setItem('exerciseFilter', JSON.stringify(request));
+    this._searchInput.value = '';
+    await this._loadAndRenderExercises(request);
   }
 
   async _onSearchKeyUp(event) {
     event.preventDefault();
-    const searchValue = this._searchInput.value.trim();
-    if (event.key === 'Enter' && searchValue) {
+    if (event.key === 'Enter') {
       await this._onSearchClick(event);
     }
   }
