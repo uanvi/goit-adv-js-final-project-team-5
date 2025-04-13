@@ -386,7 +386,7 @@ class ExercisesFilterRenderer {
     this._exercisesParent.innerHTML = '';
 
     this._pages = Number(data?.totalPages);
-    const exercises = data.getExercises();
+    const exercises = data?.getExercises() || [];
 
     if (exercises.length === 0) {
       this._exercisesParent.innerHTML = '<p>No exercises found.</p>';
