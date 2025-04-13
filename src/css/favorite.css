@@ -63,7 +63,6 @@
 }
 
 .favorite-list:has(li.no-favorites) {
-  grid-template-columns: auto;
   width: 100%;
   margin: 20px auto 45px;
 }
